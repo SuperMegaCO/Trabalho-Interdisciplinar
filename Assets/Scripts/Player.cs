@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
     float cooldownstart = 0;
     void Start()
     {
-        transform.position = new Vector3(0f, ActionPlane.transform.position.y, 0f);
-        transform.position = plane.transform.position + new Vector3(-3, 0, 0);
+  
+        transform.position = plane.transform.position + new Vector3(-3, ActionPlane.transform.position.y, 0);
     }
 
     // Update is called once per frame
