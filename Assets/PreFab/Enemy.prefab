@@ -164,7 +164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5502718601485860508}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 5.68, y: 2.01, z: -3.31}
   m_LocalScale: {x: 0.54980904, y: 0.50545, z: 0.4442438}
   m_ConstrainProportionsScale: 0
@@ -172,7 +172,7 @@ Transform:
   - {fileID: 2259073953832547720}
   - {fileID: 7969955715806616860}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!33 &2388175402117255430
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -256,10 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bca5063cb606374b85f13d4bb845f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMarker: {fileID: 0}
-  endMarker: {fileID: 0}
   gun: {fileID: 4783773734177279671}
   bullet: {fileID: 4002765458785519309, guid: bffa39615c1c2934b8eae2815cc6fef7, type: 3}
-  SpawnPositionLeft: {fileID: 0}
-  SpawnPositionRight: {fileID: 0}
   speed: 4
+  cameraTransform: {fileID: 0}
+  inverteu: 0

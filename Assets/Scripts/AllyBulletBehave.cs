@@ -18,7 +18,7 @@ public class AllyBulletBehave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementvector = new Vector3(1 * speed * Time.deltaTime, 0f, 0f);
+        movementvector = new Vector3(0f, 0f, 1 * speed * Time.deltaTime);
         transform.Translate(movementvector);
         
 

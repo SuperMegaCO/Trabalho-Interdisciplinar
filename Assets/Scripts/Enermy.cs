@@ -6,59 +6,45 @@ using UnityEngine;
 public class Enermy : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Transform startMarker;
-    public Transform endMarker;
+
     public GameObject gun;
     public GameObject bullet;
     // Movement speed in units per second.
-    public float speed = 4.0F;
+     Vector3 direcao = Vector3.left;
+    public float speed = 6f;
+    GameObject plane;
+    float posParaInverter;
+    public Transform planeTransform;
+
+    public bool inverteu;
 
     // Time when the movement started.
-    private float startTime;
-    private float cooldownTime;
+
+    private float cooldownTime = 3;
     private float lastUsedTime = 0;
 
-    // Total distance between the markers.
-    private float journeyLength;
     void Start()
     {
-
-        transform.position = new Vector3(0f, GameObject.Find("ActionPlane").transform.position.y, 0f);
-        // Keep a note of the time the movement started.
-        startTime = Time.time;
+        plane = GameObject.Find("ActionPlane");
+        transform.position = new Vector3((GameObject.Find("LeftSpawnPoint").transform.position.x+15f), GameObject.Find("ActionPlane").transform.position.y, GameObject.Find("LeftSpawnPoint").transform.position.z);
         cooldownTime = 1;
-        
-
-        // Calculate the journey length.
-        journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
-        
-
+        planeTransform = GameObject.Find("ActionPlane").transform;
+        posParaInverter = GameObject.Find("PointZigzag").transform.position.x;
+    }
+    private void Awake()
+    {
+        posParaInverter = GameObject.Find("PointZigzag").transform.position.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        EnemyMove();
         Attack(gun, bullet);
-        if (transform.position == endMarker.position)
-        {
-            Transform temp = endMarker;
-            endMarker = startMarker;
-            startMarker = temp;
-            startTime = Time.time;
-            journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
-        }
+        ZigZag();
     }
     void EnemyMove()
     {
-        // Distance moved equals elapsed time times speed..
-        float distCovered = (Time.time - startTime) * speed;
 
-        // Fraction of journey completed equals current distance divided by total distance.
-        float fractionOfJourney = distCovered / journeyLength;
-
-        // Set our position as a fraction of the distance between the markers.
-        transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fractionOfJourney);
     }
     void Attack(GameObject gun, GameObject bullet)
     {
@@ -68,5 +54,21 @@ public class Enermy : MonoBehaviour
             Instantiate(bullet, initialposition1, Quaternion.identity);
             lastUsedTime = Time.time;
         }
+    }
+    public void ZigZag()
+    {
+        transform.Translate(direcao * speed * Time.deltaTime);
+        if (transform.position.x > (planeTransform.position.x + posParaInverter))
+        {
+            inverteu = true;
+            direcao = direcao * -1f;
+        }
+        if (transform.position.x < (planeTransform.position.x - posParaInverter))
+        {
+            inverteu = true;
+            direcao = direcao * -1f;
+        }
+
+
     }
 }

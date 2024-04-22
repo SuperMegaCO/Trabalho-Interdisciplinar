@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
   
-        transform.position = plane.transform.position + new Vector3(-3, ActionPlane.transform.position.y, 0);
+        transform.position = plane.transform.position + new Vector3(0f, ActionPlane.transform.position.y, -3);
     }
 
     // Update is called once per frame
@@ -29,14 +29,14 @@ public class PlayerMovement : MonoBehaviour
         float minx = plane.transform.position.x - sizex +.7f;
         float maxz = plane.transform.position.z + sizez - .7f;
         float minz = plane.transform.position.z - sizez + .7f;
-        float movementx = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float movementx = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         bool withinboundsx = ((movementx + transform.position.x) < maxx) && ((movementx + transform.position.x) > minx);
-        float movementz = -Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float movementz = -Input.GetAxis("Vertical") * speed * Time.deltaTime;
         bool withinboundsz = ((movementz + transform.position.z) < maxz) && ((movementz + transform.position.z) > minz);
         if (withinboundsx && withinboundsz) 
         {
-            x = Input.GetAxis("Vertical");
-            z = -Input.GetAxis("Horizontal");
+            x = Input.GetAxis("Horizontal");
+            z = Input.GetAxis("Vertical");
             Vector3 movement = (new Vector3(x, 0f, z));
             transform.Translate(movement.normalized * speed * Time.deltaTime);
         }

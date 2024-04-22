@@ -19,7 +19,7 @@ public class EnemyBulletBehave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementvector = new Vector3(-1 * speed * Time.deltaTime, 0f, 0f);
+        movementvector = new Vector3(0f, 0f, -1 * speed * Time.deltaTime);
         transform.Translate(movementvector);
 
 
@@ -28,7 +28,7 @@ public class EnemyBulletBehave : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.position = plane.transform.position + new Vector3(-3, 0, 0); ;
+            other.transform.position = plane.transform.position + new Vector3(0f, 0, -3); ;
             GameManager.currentHP--;
         }
     }

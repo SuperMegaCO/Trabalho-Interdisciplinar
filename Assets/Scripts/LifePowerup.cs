@@ -14,7 +14,7 @@ public class LifePowerup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(-1 * speed * Time.deltaTime, 0f, 0f);
+        transform.Translate(0f, 0f, -1 * speed * Time.deltaTime);
     }
     private void OnTriggerEnter(Collider other)
     {

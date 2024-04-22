@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         currentHP = maxHP;
         Time.timeScale = 1.0f;
         EndCanvas.SetActive(false);
-        InvokeRepeating("InstantiateEnemy", 5, 5);
+        InvokeRepeating("InstantiateEnemy", 0, 1);
         NumberOfEnemies = 1;
         InvokeRepeating("InstantiateLifeRestore", 3, 10);
 
@@ -76,14 +76,12 @@ public class GameManager : MonoBehaviour
         NumberOfEnemies++;
         EnemyInstance.name = "Enemy " + NumberOfEnemies;
         EnemyArray[NumberOfEnemies -1] = EnemyInstance;
-        EnemyArray[NumberOfEnemies - 1].GetComponent<Enermy>().startMarker = StartP;
-        EnemyArray[NumberOfEnemies - 1].GetComponent<Enermy>().endMarker = EndP;
-        EnemyArray[NumberOfEnemies - 1].GetComponent<Enermy>().speed = Random.Range(3,25);
+
 
 
     }
     public void InstantiateLifeRestore()
     {
-        Instantiate(Lifepowerup, new Vector3(StartP.position.x, StartP.position.y, (StartP.position.z - Random.Range(.5f, Vector3.Distance(StartP.position, EndP.position)))), Quaternion.identity);
+        Instantiate(Lifepowerup, new Vector3(StartP.position.x + 10 + Random.Range(.5f, Vector3.Distance(StartP.position, EndP.position)), StartP.position.y, StartP.position.z), Quaternion.identity);
     }
 }
