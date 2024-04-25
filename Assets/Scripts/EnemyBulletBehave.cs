@@ -28,7 +28,7 @@ public class EnemyBulletBehave : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.transform.position = plane.transform.position + new Vector3(0f, 0, -3); ;
+            other.transform.position = plane.transform.position + new Vector3(0f, 0, -3);
             GameManager.currentHP--;
         }
     }

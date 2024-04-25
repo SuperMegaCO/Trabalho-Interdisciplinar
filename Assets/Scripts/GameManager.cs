@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     public Transform EndP;
     public Text HighScore;
     public GameObject Lifepowerup;
+    public GameObject GameOver;
+    public GameObject Win;
     void Start()
     {
         points = 0;
@@ -38,13 +40,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHP <1)
+        if (currentHP < 0)
         {
-            EndGame(EndCanvas,GameObject.Find("GameOver"));
+            EndGame(EndCanvas,GameOver);
         }
         if (points > 5)
         {
-            EndGame(EndCanvas, GameObject.Find("GameOver Win"));
+            EndGame(EndCanvas, Win);    
         }
         pointsdisplay.text = "Points: " + points;
         hpdisplay.text = "HP: " + currentHP + "/" + maxHP;

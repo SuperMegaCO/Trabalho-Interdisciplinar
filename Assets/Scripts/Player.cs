@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         float minz = plane.transform.position.z - sizez + .7f;
         float movementx = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         bool withinboundsx = ((movementx + transform.position.x) < maxx) && ((movementx + transform.position.x) > minx);
-        float movementz = -Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float movementz = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         bool withinboundsz = ((movementz + transform.position.z) < maxz) && ((movementz + transform.position.z) > minz);
         if (withinboundsx && withinboundsz) 
         {
