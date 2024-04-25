@@ -40,7 +40,11 @@ public class GameManager : MonoBehaviour
     {
         if (currentHP <1)
         {
-            EndGame(EndCanvas);
+            EndGame(EndCanvas,GameObject.Find("GameOver"));
+        }
+        if (points > 5)
+        {
+            EndGame(EndCanvas, GameObject.Find("GameOver Win"));
         }
         pointsdisplay.text = "Points: " + points;
         hpdisplay.text = "HP: " + currentHP + "/" + maxHP;
@@ -50,10 +54,11 @@ public class GameManager : MonoBehaviour
         Destroy(enemy);
         points++;
     }
-    public static void EndGame(GameObject canvas)
+    public static void EndGame(GameObject canvas, GameObject Panel)
     {
         Time.timeScale = 0f;
         canvas.SetActive(true);
+        Panel.SetActive(true);
     }
     public void Restart()
     {
