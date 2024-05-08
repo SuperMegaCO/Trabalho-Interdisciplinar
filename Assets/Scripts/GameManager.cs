@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject Lifepowerup;
     public GameObject GameOver;
     public GameObject Win;
+    public bool paused = false;
     void Start()
     {
         points = 0;
@@ -50,6 +51,10 @@ public class GameManager : MonoBehaviour
         }
         pointsdisplay.text = "Points: " + points;
         hpdisplay.text = "HP: " + currentHP + "/" + maxHP;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause(paused);
+        }
     }
     public static void EnemyDestruction(GameObject enemy)
     {
@@ -86,6 +91,18 @@ public class GameManager : MonoBehaviour
 
 
 
+    }
+    public void Pause(bool paused)
+    {
+        if (!paused)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1.0f;
+        }
+        
     }
     public void InstantiateLifeRestore()
     {
