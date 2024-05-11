@@ -94,15 +94,17 @@ public class GameManager : MonoBehaviour
     }
     public void Pause(bool paused)
     {
-        if (!paused)
+        if (paused)
         {
-            Time.timeScale = 0;
+            Time.timeScale = 1.0f;
+            paused = false;
         }
         else
         {
-            Time.timeScale = 1.0f;
+            Time.timeScale = 0f;
+            paused = true;
         }
-        
+
     }
     public void InstantiateLifeRestore()
     {

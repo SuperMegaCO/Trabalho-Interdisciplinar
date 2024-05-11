@@ -17,7 +17,7 @@ public class StartMenu : MonoBehaviour
     }
     public void StartGame() 
     {
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level 1", LoadSceneMode.Single);
     }
     
         

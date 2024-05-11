@@ -1535,6 +1535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 996381250}
   - component: {fileID: 996381251}
+  - component: {fileID: 996381252}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1581,6 +1582,20 @@ MonoBehaviour:
   Lifepowerup: {fileID: 5071274902040335995, guid: 134460e58b1366a4d82955a4f181e429, type: 3}
   GameOver: {fileID: 98971531}
   Win: {fileID: 1703355294}
+  paused: 0
+--- !u!114 &996381252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996381249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba89c2cdedb0bd044928b09fda577d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ElementCodes: 75000000690000006f00000070000000
 --- !u!1 &1154786507
 GameObject:
   m_ObjectHideFlags: 0
