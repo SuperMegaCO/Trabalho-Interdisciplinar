@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static int currentHP;
     public GameObject EndCanvas;
     public GameObject UICanvas;
+    public GameObject PauseCanvas;
     public Text pointsdisplay;
     public Text hpdisplay;
     public GameObject EnemyPrefab;
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
         hpdisplay.text = "HP: " + currentHP + "/" + maxHP;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause(paused);
+            paused = Pause(paused);
         }
     }
     public static void EnemyDestruction(GameObject enemy)
@@ -92,17 +93,23 @@ public class GameManager : MonoBehaviour
 
 
     }
-    public void Pause(bool paused)
+    public bool Pause(bool pause)
     {
-        if (paused)
+        if (pause)
         {
-            Time.timeScale = 1.0f;
-            paused = false;
+            Time.timeScale = 1.0f;  
+            
+            UICanvas.SetActive(true);
+            PauseCanvas.SetActive(false);
+            return !pause;
         }
-        else
+        else 
         {
             Time.timeScale = 0f;
-            paused = true;
+            
+            UICanvas.SetActive(false);
+            PauseCanvas.SetActive(true);
+            return !pause;
         }
 
     }
