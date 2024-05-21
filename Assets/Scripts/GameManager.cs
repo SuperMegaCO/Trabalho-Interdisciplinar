@@ -26,8 +26,9 @@ public class GameManager : MonoBehaviour
     public GameObject GameOver;
     public GameObject Win;
     public bool paused = false;
-    void Start()
+    void Awake()
     {
+        AudioController.Instance.TocarBGMusic(1);
         points = 0;
         maxHP = 3;
         currentHP = maxHP;
