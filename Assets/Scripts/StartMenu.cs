@@ -55,11 +55,12 @@ public class StartMenu : MonoBehaviour
     {
         StartScreen.gameObject.SetActive(true);
         LevelScreen.gameObject.SetActive(false);
+        PauseScreen.gameObject.SetActive(false);
     }
     public void GoToPause()
     {
-        StartScreen.gameObject.SetActive(true);
-        LevelScreen.gameObject.SetActive(false);
+        StartScreen.gameObject.SetActive(false);
+        PauseScreen.gameObject.SetActive(true);
     }
 
 
