@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("InstantiateLifeRestore", 3, 10);
 
     }
+    private void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
