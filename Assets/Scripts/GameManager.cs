@@ -16,9 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject PauseCanvas;
     public Text pointsdisplay;
     public Text hpdisplay;
-    public GameObject EnemyPrefab;
-    GameObject[] EnemyArray= new GameObject[100];
-    public int NumberOfEnemies;
+  
     public Transform StartP;
     public Transform EndP;
     public Text HighScore;
@@ -34,8 +32,6 @@ public class GameManager : MonoBehaviour
         currentHP = maxHP;
         Time.timeScale = 1.0f;
         EndCanvas.SetActive(false);
-        InvokeRepeating("InstantiateEnemy", 0, 1);
-        NumberOfEnemies = 1;
         InvokeRepeating("InstantiateLifeRestore", 3, 10);
 
     }
@@ -81,23 +77,10 @@ public class GameManager : MonoBehaviour
         currentHP = maxHP;
         Time.timeScale = 1.0f;
         EndCanvas.SetActive(false);
-        InvokeRepeating("InstantiateEnemy", 5, 5);
-        NumberOfEnemies = 1;
         InvokeRepeating("InstantiateLifeRestore", 3, 10);
         SceneManager.LoadScene(0);
     }
-    public void InstantiateEnemy()
-    {
 
-        GameObject EnemyInstance = Instantiate(EnemyPrefab);
-        
-        NumberOfEnemies++;
-        EnemyInstance.name = "Enemy " + NumberOfEnemies;
-        EnemyArray[NumberOfEnemies -1] = EnemyInstance;
-
-
-
-    }
     public bool Pause(bool pause)
     {
         if (pause)

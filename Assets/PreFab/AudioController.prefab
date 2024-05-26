@@ -148,7 +148,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1bc06006d44df28428dc9fce57cc33d7, type: 3}
   - {fileID: 8300000, guid: d79976c021714f74cb5bd3e91da1b37a, type: 3}
   - {fileID: 0}
-  _sfxClips: []
+  _sfxClips:
+  - {fileID: 8300000, guid: bf4fb427c1691024ea7a4e6d0d89e5a0, type: 3}
+  - {fileID: 8300000, guid: befa99e916c225045bd3e258134429df, type: 3}
+  - {fileID: 8300000, guid: db099ac90a85bb34a959f2fb567a9eca, type: 3}
 --- !u!1001 &4847744934089944170
 PrefabInstance:
   m_ObjectHideFlags: 0
