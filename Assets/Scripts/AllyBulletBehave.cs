@@ -23,12 +23,6 @@ public class AllyBulletBehave : MonoBehaviour
         
 
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            GameManager.EnemyDestruction(other.gameObject);
-        }
-    }
+
     
 }

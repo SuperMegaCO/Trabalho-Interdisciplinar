@@ -6,11 +6,16 @@ public class SeekingEnemyBehavior : MonoBehaviour
 {
         public Transform target; // alvo que eu quero seguir
         public float speed = 10;
+        public EnemyTemplate Sword = new EnemyTemplate();
+    private void Start()
+    {
+        Sword.HP = 3;
+    }
 
 
-
-        void Update()
+    void Update()
         {
+            Sword.invFrames--;
             Vector3 dirTarget = (transform.position - target.position); // direção entre o alvo e o player~
 
             dirTarget.y = 0f;
@@ -24,4 +29,20 @@ public class SeekingEnemyBehavior : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(new Vector3(-dirTarget.x,0,-dirTarget.z)); // faz o objeto olhar para a direcao que esta
             transform.Rotate(0,0,90);
         }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (Sword.invFrames <= 0)
+        {
+            if (other.CompareTag("AllyBullet"))
+            {
+                Sword.HP--;
+                Destroy(other.gameObject);
+                Sword.invFrames = 60;
+            }
+            if (Sword.HP <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
+}
