@@ -27,7 +27,6 @@ public class SeekingEnemyBehavior : MonoBehaviour
                 transform.Translate(Vector3.forward * Time.deltaTime * speed);
             }
             transform.rotation = Quaternion.LookRotation(new Vector3(-dirTarget.x,0,-dirTarget.z)); // faz o objeto olhar para a direcao que esta
-            transform.Rotate(0,0,90);
         }
     private void OnTriggerEnter(Collider other)
     {
