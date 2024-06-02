@@ -8,6 +8,10 @@ TagManager:
   - Enemy
   - Bullet
   - AllyBullet
+  - SwordSpawnPoint
+  - CauldronSpawnPoint
+  - AnvilSpawnPoint
+  - BossSpawnPoint
   layers:
   - Default
   - TransparentFX

@@ -16,9 +16,8 @@ public class GameManager : MonoBehaviour
     public GameObject PauseCanvas;
     public Text pointsdisplay;
     public Text hpdisplay;
-  
-    public Transform StartP;
-    public Transform EndP;
+    public static bool gameWon = false;
+
     public Text HighScore;
     public GameObject Lifepowerup;
     public GameObject GameOver;
@@ -32,7 +31,6 @@ public class GameManager : MonoBehaviour
         currentHP = maxHP;
         Time.timeScale = 1.0f;
         EndCanvas.SetActive(false);
-        InvokeRepeating("InstantiateLifeRestore", 3, 10);
 
     }
     private void Start()
@@ -47,15 +45,19 @@ public class GameManager : MonoBehaviour
         {
             EndGame(EndCanvas,GameOver);
         }
-        if (points > 5)
+        if (gameWon)
         {
             EndGame(EndCanvas, Win);    
         }
-        pointsdisplay.text = "Points: " + points;
+        pointsdisplay.text = "Enemies Left Until Next Wave: " + Wave.aliveEnemies + "/" + Wave.numbOfEnemies;
         hpdisplay.text = "HP: " + currentHP + "/" + maxHP;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             paused = Pause(paused);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            gameWon = true;
         }
     }
     public static void EnemyDestruction(GameObject enemy)
@@ -101,8 +103,9 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    public void InstantiateLifeRestore()
+    public void GoToNextLevel()
     {
-        Instantiate(Lifepowerup, new Vector3(StartP.position.x + 10 + Random.Range(.5f, Vector3.Distance(StartP.position, EndP.position)), StartP.position.y, StartP.position.z), Quaternion.identity);
+        SceneManager.LoadScene(2);
     }
+    
 }

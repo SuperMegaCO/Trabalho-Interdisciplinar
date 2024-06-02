@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gun1;
     public GameObject gun2;
     public GameObject bullet;
+    public static int invFrames;
     float cooldownstart = 0;
     void Start()
     {
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        invFrames--;
         float sizex = (plane.GetComponent<MeshRenderer>().bounds.size.x/2);
         float sizez = (plane.GetComponent<MeshRenderer>().bounds.size.z/2);
         float maxx = plane.transform.position.x + sizex -.7f;
