@@ -7,7 +7,7 @@ public class CauldronBehavior : MonoBehaviour
 {
     public GameObject bullet;
     public EnemyTemplate Cauldron = new EnemyTemplate();
-    public int cooldowntracker = 0;
+    public float timeLastFired;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +19,7 @@ public class CauldronBehavior : MonoBehaviour
     void Update()
     {
         Cauldron.invFrames--;
-        cooldowntracker++;
-        if (cooldowntracker % (4*60) == 0)
+        if (Time.time - (timeLastFired+1)>= 0)
         {
             Attack();
         }
@@ -28,6 +27,7 @@ public class CauldronBehavior : MonoBehaviour
     void Attack()
     {
         float attackradius = 2;
+        timeLastFired = Time.time;
         float[,] bulletpositions = { { 0, 1 }, { .707f, .707f }, { 1, 0 }, { 0, -1 }, { .707f, -.707f }, { -1, 0 }, { -.707f, -.707f }, { -.707f, .707f } };
         for (int i = 0; i < 8; i++)
         {

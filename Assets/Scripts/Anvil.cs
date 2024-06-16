@@ -10,12 +10,15 @@ public class Anvil : MonoBehaviour
     public GameObject AnvilComponent;
     public EnemyTemplate AnvilTemp = new EnemyTemplate();
     public int cooldowntracker = 0;
+    
+    int timesmoved = 0;
+    bool movedmax = false;
     // Start is called before the first frame update
     void Start()
     {
         AnvilTemp.HP = 3;
         yplane = GameObject.Find("ActionPlane");
-        
+        AnvilTemp.Speed = 1;
     }
  
 
@@ -27,6 +30,21 @@ public class Anvil : MonoBehaviour
         if (cooldowntracker % (3 * 60) == 0)
         {
             Attack();
+        }
+        if (timesmoved < 3 && movedmax == false)
+        {
+            transform.Translate(Vector3.back*AnvilTemp.Speed);
+            timesmoved++;
+        }
+        else if (timesmoved >= 3 || (timesmoved > 0 && movedmax == true)) 
+        {
+            movedmax = true;
+            transform.Translate(Vector3.forward * AnvilTemp.Speed);
+            timesmoved--;
+        }
+        else if (timesmoved == 0)
+        {
+            movedmax = false;
         }
     }
 
@@ -60,7 +78,7 @@ public class Anvil : MonoBehaviour
         {
 
             /* Distance around the circle */
-            var radians = ((2 * MathF.PI) / num * i);
+            var radians = (((2 * MathF.PI) / num) * i);
             /* Get the vector direction */
             var vertical = MathF.Sin(radians);
             var horizontal = MathF.Cos(radians);
@@ -71,8 +89,8 @@ public class Anvil : MonoBehaviour
             var spawnPos = point - (spawnDir * radius); // Radius is just the distance away from the point
 
             /* Now spawn */
-            var individualbullet = Instantiate(bullet, spawnPos, Quaternion.identity) as GameObject;
-            individualbullet.transform.LookAt((point - spawnPos));
+            var individualbullet = Instantiate(bullet, -spawnPos, Quaternion.identity) as GameObject;
+            individualbullet.transform.LookAt(new Vector3(spawnDir.x, 0, spawnDir.z));
 
             /* Adjust height */
             individualbullet.transform.position = (new Vector3(spawnPos.x, yplane.transform.position.y, spawnPos.z));

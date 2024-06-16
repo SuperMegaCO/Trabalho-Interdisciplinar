@@ -13,18 +13,18 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gun1;
     public GameObject gun2;
     public GameObject bullet;
-    public static int invFrames;
+    public static bool invFrames;
+    public static float timeLastHit;
     float cooldownstart = 0;
     void Start()
     {
-  
         transform.position = plane.transform.position + new Vector3(0f, ActionPlane.transform.position.y, -3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        invFrames--;
+        
         float sizex = (plane.GetComponent<MeshRenderer>().bounds.size.x/2);
         float sizez = (plane.GetComponent<MeshRenderer>().bounds.size.z/2);
         float maxx = plane.transform.position.x + sizex -.7f;
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 movement = (new Vector3(x, 0f, z));
             transform.Translate(movement.normalized * speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.Space) && (Time.time - cooldownstart  > .5))
+        if ((Time.time - cooldownstart  > .1))
         {
             cooldownstart = Time.time;
             Attack(gun1, gun2, bullet);

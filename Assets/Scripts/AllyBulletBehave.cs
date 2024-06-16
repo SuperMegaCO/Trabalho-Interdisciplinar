@@ -6,7 +6,7 @@ public class AllyBulletBehave : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    int speed = 5;
+    int speed = 15;
     Vector3 movementvector;
     float TimeStart;
 

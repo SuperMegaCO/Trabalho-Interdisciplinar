@@ -34,9 +34,10 @@ public class SeekingEnemyBehavior : MonoBehaviour
         {
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
         }
-        if (Time.time - startTime > 6)
+        if (Time.time - startTime > 5)
         {
             Destroy(this.gameObject);
+            Wave.aliveEnemies--;
         }
     }
     private void OnTriggerEnter(Collider other)
