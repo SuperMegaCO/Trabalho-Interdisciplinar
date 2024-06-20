@@ -21,16 +21,26 @@ public class Wave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (aliveEnemies == 0 && waveSpawned == true)
+        if (aliveEnemies <= 0 && waveSpawned == true)
         {
-            waveSpawned = false;
-            Waves[waveID].SetActive(false);
-            waveID++;
-            SpawnWave();
+            if (waveID != 3)
+            {
+                numbOfEnemies = 0;
+                waveSpawned = false;
+                Waves[waveID].SetActive(false);
+                waveID++;
+                SpawnWave();
+            }
+            else
+            {
+                GameManager.gameWon = true;
+            }
+            
         }
     }
     void SpawnWave()
     {
+        PlayerMovement.timeLastHit = Time.time;
         Waves[waveID].gameObject.SetActive(true);
         waveSpawned = true;
         int i = 0;
@@ -41,9 +51,10 @@ public class Wave : MonoBehaviour
             foreach (var point in SpawnPoints)
             {
                 Instantiate(Enemies[i], new Vector3(point.transform.position.x, GameObject.Find("ActionPlane").transform.position.y, point.transform.position.z), Quaternion.identity);
+                if (tag != "SwordSpawnPoint" && point.name!= "Particle System") { 
                 aliveEnemies++;
                 numbOfEnemies++;
-
+                }
 
             }
             i++;

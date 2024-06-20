@@ -18,28 +18,28 @@ public class Anvil : MonoBehaviour
     {
         AnvilTemp.HP = 3;
         yplane = GameObject.Find("ActionPlane");
-        AnvilTemp.Speed = 1;
+        AnvilTemp.Speed = 1f;
     }
  
 
     // Update is called once per frame
     void Update()
     {
-        AnvilTemp.invFrames--;
+        
         cooldowntracker++;
-        if (cooldowntracker % (3 * 60) == 0)
+        if (Time.time - (AnvilTemp.TimeLastShot + 2) >= 0)
         {
             Attack();
         }
-        if (timesmoved < 3 && movedmax == false)
+        if (timesmoved < 4 && movedmax == false)
         {
-            transform.Translate(Vector3.back*AnvilTemp.Speed);
+            transform.Translate(Vector3.back*AnvilTemp.Speed*Time.deltaTime);
             timesmoved++;
         }
-        else if (timesmoved >= 3 || (timesmoved > 0 && movedmax == true)) 
+        else if (timesmoved >= 4 || (timesmoved > 0 && movedmax == true)) 
         {
             movedmax = true;
-            transform.Translate(Vector3.forward * AnvilTemp.Speed);
+            transform.Translate(Vector3.forward * AnvilTemp.Speed * Time.deltaTime);
             timesmoved--;
         }
         else if (timesmoved == 0)
@@ -50,18 +50,19 @@ public class Anvil : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (AnvilTemp.invFrames <= 0)
+        if (Time.time - (AnvilTemp.TimeLastHit + AnvilTemp.invFrames) >= 0)
         {
             if (other.CompareTag("AllyBullet"))
             {
                 AnvilTemp.HP--;
                 Destroy(other.gameObject);
-                AnvilTemp.invFrames = 60;
+                AnvilTemp.TimeLastHit = Time.deltaTime;
             }
-            if (AnvilTemp.HP <= 0)
+            if (AnvilTemp.HP == 0)
             {
                 Destroy(this.gameObject);
                 Wave.aliveEnemies--;
+                GameManager.points++;
             }
         }
     }

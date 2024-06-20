@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    int speed = 10;
+    static int speed = 10;
     public GameObject plane;
     public GameObject ActionPlane;
     float x;
@@ -24,7 +24,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            GetComponent<Collider>().transform.localScale = Vector3.one * .3f;
+            speed = 3;
+        }
+        else
+        {
+            speed = 10;
+            GetComponent<Collider>().transform.localScale = Vector3.one;
+        }
+       ;
         float sizex = (plane.GetComponent<MeshRenderer>().bounds.size.x/2);
         float sizez = (plane.GetComponent<MeshRenderer>().bounds.size.z/2);
         float maxx = plane.transform.position.x + sizex -.7f;

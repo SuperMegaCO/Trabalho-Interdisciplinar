@@ -18,8 +18,8 @@ public class CauldronBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Cauldron.invFrames--;
-        if (Time.time - (timeLastFired+1)>= 0)
+        
+        if (Time.time - (timeLastFired+Cauldron.ShootCoolDown)>= 0)
         {
             Attack();
         }
@@ -36,18 +36,19 @@ public class CauldronBehavior : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (Cauldron.invFrames <= 0)
+        if (Time.time - (Cauldron.TimeLastHit + Cauldron.invFrames) >= 0)
         {
             if (other.CompareTag("AllyBullet"))
             {
                 Cauldron.HP--;
                 Destroy(other.gameObject);
-                Cauldron.invFrames = 60;
+                Cauldron.TimeLastHit = Time.deltaTime;
             }
-            if (Cauldron.HP <= 0)
+            if (Cauldron.HP == 0)
             {
                 Destroy(this.gameObject);
                 Wave.aliveEnemies--;
+                GameManager.points++;
             }
         }
     }

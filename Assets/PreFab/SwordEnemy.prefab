@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 15
+  speed: 3
   damageAnim: {fileID: 0}
   deathAnim: {fileID: 0}
   spawnFX: {fileID: 0}

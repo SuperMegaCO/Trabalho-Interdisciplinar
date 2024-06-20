@@ -14,8 +14,9 @@ public class GameManager : MonoBehaviour
     public GameObject EndCanvas;
     public GameObject UICanvas;
     public GameObject PauseCanvas;
-    public Text pointsdisplay;
+    public Text wavedisplay;
     public Text hpdisplay;
+    public Text pointsdisplay;
     public static bool gameWon = false;
 
     public Text HighScore;
@@ -49,8 +50,9 @@ public class GameManager : MonoBehaviour
         {
             EndGame(EndCanvas, Win);    
         }
-        pointsdisplay.text = "Enemies Left Until Next Wave: " + Wave.aliveEnemies + "/" + Wave.numbOfEnemies;
+        wavedisplay.text = "Enemies Left Until Next Wave: " + Wave.aliveEnemies + "/" + Wave.numbOfEnemies;
         hpdisplay.text = "HP: " + currentHP + "/" + maxHP;
+        pointsdisplay.text = "Points: " + points;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             paused = Pause(paused);
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
         {
             gameWon = true;
         }
+       
     }
     public static void EnemyDestruction(GameObject enemy)
     {
