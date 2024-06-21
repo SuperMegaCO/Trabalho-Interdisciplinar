@@ -23,7 +23,7 @@ public class Wave : MonoBehaviour
     {
         if (aliveEnemies <= 0 && waveSpawned == true)
         {
-            if (waveID != 3)
+            if (waveID != Waves.GetLength(0) -1)
             {
                 numbOfEnemies = 0;
                 waveSpawned = false;

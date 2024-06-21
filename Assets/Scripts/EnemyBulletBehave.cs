@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyBulletBehave : MonoBehaviour
 {
@@ -15,6 +17,14 @@ public class EnemyBulletBehave : MonoBehaviour
     void Start()
     {
         plane = GameObject.Find("ActionPlane");
+
+    }
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().name == "LevelTwo")
+        {
+            speed *= 2;
+        }
     }
 
     // Update is called once per frame
