@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject UICanvas;
     public GameObject PauseCanvas;
     public Text wavedisplay;
-    public Text hpdisplay;
+    public GameObject HealthDisplay;
+    public Sprite[] Health = new Sprite[3];
     public Text pointsdisplay;
     public static bool gameWon = false;
 
@@ -51,7 +52,6 @@ public class GameManager : MonoBehaviour
             EndGame(EndCanvas, Win);    
         }
         wavedisplay.text = "Enemies Left Until Next Wave: " + Wave.aliveEnemies + "/" + Wave.numbOfEnemies;
-        hpdisplay.text = "HP: " + currentHP + "/" + maxHP;
         pointsdisplay.text = "Points: " + points;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         {
             gameWon = true;
         }
+        HealthDisplay.GetComponent<Image>().sprite = Health[System.Math.Clamp(currentHP - 1, 0, 2)];
        
     }
     public static void EnemyDestruction(GameObject enemy)

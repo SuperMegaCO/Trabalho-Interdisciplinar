@@ -43,7 +43,7 @@
         private void OnTriggerEnter(Collider other)
         {
 
-            if (other.CompareTag("Player") && Time.time - (PlayerMovement.timeLastHit + 3) >= 0)    
+            if (other.CompareTag("Player") && Time.time - (PlayerMovement.timeLastHit + 10) >= 0)    
             {
                 GameManager.currentHP--;
                 Destroy(gameObject);

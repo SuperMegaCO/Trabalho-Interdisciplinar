@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     float cooldownstart = 0;
     void Start()
     {
+        timeLastHit = -1;
         transform.position = plane.transform.position + new Vector3(0f, ActionPlane.transform.position.y, -3);
     }
 
@@ -65,5 +66,18 @@ public class PlayerMovement : MonoBehaviour
         Instantiate(bullet, initialposition1, Quaternion.identity);
         Instantiate(bullet, initialposition2, Quaternion.identity);
         
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet") && (Time.time - (timeLastHit + 1) >= 0))
+        {
+            GameManager.currentHP--;
+            timeLastHit = Time.time;
+            Debug.Log($"Hit: {GameManager.currentHP}");
+        }
+        else if (other.CompareTag("Bullet"))
+        {
+            Debug.Log($"Inv: {GameManager.currentHP}");
+        }
     }
 }

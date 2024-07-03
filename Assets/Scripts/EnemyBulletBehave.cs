@@ -37,13 +37,13 @@ public class EnemyBulletBehave : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && (Time.time - (PlayerMovement.timeLastHit + 3) > 0))
+        if (other.CompareTag("Player"))
         {
-            other.transform.position = plane.transform.position + new Vector3(0f, 0, -3);
-            GameManager.currentHP--;
+            
             Destroy(this.gameObject);
-            PlayerMovement.timeLastHit = Time.time;
         }
+
+
     }
 
 }
