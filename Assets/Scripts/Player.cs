@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public static float timeLastHit;
     Vector3 StartPos;
     public ParticleSystem bulletcleareffect;
+    public GameObject hit;
     float cooldownstart = 0;
     void Start()
     {
@@ -61,6 +62,14 @@ public class PlayerMovement : MonoBehaviour
             cooldownstart = Time.time;
             Attack(gun1, gun2, bullet);
         }
+        if (Time.time - (timeLastHit + 2) >= 0)
+        {
+            hit.SetActive(false);
+        }
+        else
+        {
+            hit.SetActive(true);
+        }
 
 
     }
@@ -84,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(bullet);
                 Instantiate(bulletcleareffect, particlepos, Quaternion.Euler(90, 0, 0));
                 transform.position = StartPos;
-               ;
+               
                 
             }
 

@@ -53,11 +53,7 @@ MonoBehaviour:
   gun2: {fileID: 1329595531776822333}
   bullet: {fileID: 6447336572810746536, guid: dbc0702ca05762040a70eff7f1863d98, type: 3}
   bulletcleareffect: {fileID: 2950147880052617023, guid: 89e500c6c90b939408b621a17bbd63de, type: 3}
-  bookMat1: {fileID: -7941626302072335489, guid: 104ac09b382adea46999834d023b00a5, type: 3}
-  bookMat2: {fileID: 1460604720000771558, guid: 104ac09b382adea46999834d023b00a5, type: 3}
-  damageMat: {fileID: 2100000, guid: f40ddbcec6a415642a93cfd2d4a4011a, type: 2}
-  damageflicker: 0
-  timeFlickerStart: 0
+  hit: {fileID: 2948169213532240847}
 --- !u!54 &3609865868961408481
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -108,6 +104,89 @@ CapsuleCollider:
   m_Height: 0
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &7115752391195473051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6562650668513579334}
+    m_Modifications:
+    - target: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5344149186038419284, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_Name
+      value: HitEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5344149186038419284, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829331762734974190, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829331762734974190, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829331762734974190, guid: 08b92484615718e468264438371adeeb, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08b92484615718e468264438371adeeb, type: 3}
+--- !u!1 &2948169213532240847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5344149186038419284, guid: 08b92484615718e468264438371adeeb, type: 3}
+  m_PrefabInstance: {fileID: 7115752391195473051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9052689523885723190 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2261271221457681069, guid: 08b92484615718e468264438371adeeb, type: 3}
+  m_PrefabInstance: {fileID: 7115752391195473051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8935527132223515761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,7 +281,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2815425514388815159, guid: 934dd6088e7b68a42806f3a931812cb1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9052689523885723190}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5362946276710167332, guid: 934dd6088e7b68a42806f3a931812cb1, type: 3}
       insertIndex: -1
@@ -241,11 +323,7 @@ MonoBehaviour:
   gun2: {fileID: 1329595531776822333}
   bullet: {fileID: 6447336572810746536, guid: dbc0702ca05762040a70eff7f1863d98, type: 3}
   bulletcleareffect: {fileID: 0}
-  bookMat1: {fileID: 0}
-  bookMat2: {fileID: 0}
-  damageMat: {fileID: 0}
-  damageflicker: 0
-  timeFlickerStart: 0
+  hit: {fileID: 0}
 --- !u!4 &6562650668513579334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2815425514388815159, guid: 934dd6088e7b68a42806f3a931812cb1, type: 3}
