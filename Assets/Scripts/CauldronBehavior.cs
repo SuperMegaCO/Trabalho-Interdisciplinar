@@ -46,11 +46,24 @@ public class CauldronBehavior : MonoBehaviour
             }
             if (Cauldron.HP == 0)
             {
+                Death();
                 Destroy(this.gameObject);
+                
                 Wave.aliveEnemies--;
                 GameManager.points++;
             }
         }
+    }
+    public GameObject particles;
+    public GameObject particlesPrefab;
+    public void Death()
+    {
+        particles = Instantiate(particlesPrefab, transform.position, Quaternion.identity);
+        Invoke("TurnOff", .5f);
+    }
+    public void TurnOff()
+    {
+        Destroy(particles);
     }
 }
  

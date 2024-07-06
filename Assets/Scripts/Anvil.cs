@@ -60,6 +60,7 @@ public class Anvil : MonoBehaviour
             }
             if (AnvilTemp.HP == 0)
             {
+                Death();
                 Destroy(this.gameObject);
                 Wave.aliveEnemies--;
                 GameManager.points++;
@@ -96,5 +97,16 @@ public class Anvil : MonoBehaviour
             /* Adjust height */
             individualbullet.transform.position = (new Vector3(spawnPos.x, yplane.transform.position.y, spawnPos.z));
         }
+    }
+    public GameObject particles;
+    public GameObject particlesPrefab;
+    public void Death()
+    {
+        particles = Instantiate(particlesPrefab, transform);
+        Invoke("TurnOff", 1f);
+    }
+    public void TurnOff()
+    {
+        Destroy(particles);
     }
 }

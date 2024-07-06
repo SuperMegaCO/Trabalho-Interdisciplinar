@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject Lifepowerup;
     public GameObject GameOver;
     public GameObject Win;
+    public GameObject deathEffect;
     public bool paused = false;
     void Awake()
     {
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentHP <= 0)
         {
-            EndGame(EndCanvas,GameOver);
+            
         }
         if (gameWon)
         {

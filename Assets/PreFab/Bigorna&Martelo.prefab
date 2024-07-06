@@ -51,6 +51,8 @@ MonoBehaviour:
   yplane: {fileID: 0}
   AnvilComponent: {fileID: 7852406537569841763}
   cooldowntracker: 0
+  particles: {fileID: 3482522346003431224, guid: 81445c96e4adbae4aa73f9d4b3fff2d9, type: 3}
+  particlesPrefab: {fileID: 3482522346003431224, guid: 81445c96e4adbae4aa73f9d4b3fff2d9, type: 3}
 --- !u!65 &7759966632469343770
 BoxCollider:
   m_ObjectHideFlags: 0
