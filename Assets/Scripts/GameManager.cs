@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHP < 0)
+        if (currentHP <= 0)
         {
             EndGame(EndCanvas,GameOver);
         }

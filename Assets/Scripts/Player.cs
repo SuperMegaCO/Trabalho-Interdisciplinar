@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 StartPos;
     public ParticleSystem bulletcleareffect;
     public GameObject hit;
-    float cooldownstart = 0;
+    float cooldownstart;
     void Start()
     {
         timeLastHit = -1;
@@ -57,20 +57,12 @@ public class PlayerMovement : MonoBehaviour
             Vector3 movement = (new Vector3(x, 0f, z));
             transform.Translate(movement.normalized * speed * Time.deltaTime);
         }
-        if ((Time.time - cooldownstart > .1))
+        if ((Time.time - cooldownstart > .2))
         {
             cooldownstart = Time.time;
             Attack(gun1, gun2, bullet);
         }
-        if (Time.time - (timeLastHit + 2) >= 0)
-        {
-            hit.SetActive(false);
-        }
-        else
-        {
-            hit.SetActive(true);
-        }
-
+ 
 
     }
     void Attack(GameObject gun, GameObject gun2, GameObject bullet)
@@ -85,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((other.CompareTag("Bullet")) && (Time.time - (timeLastHit + 1) >= 0))
         {
+            HitActive();
             GameManager.currentHP--;
             timeLastHit = Time.time;
             foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
@@ -93,16 +86,24 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(bullet);
                 Instantiate(bulletcleareffect, particlepos, Quaternion.Euler(90, 0, 0));
                 transform.position = StartPos;
-               
+                
                 
             }
-
-            Debug.Log($"Hit: {GameManager.currentHP}");
+            
         }
         else if (other.CompareTag("Bullet"))
         {
-            Debug.Log($"Inv: {GameManager.currentHP}");
         }
     }
-  
+
+
+    public void HitActive()
+    {
+        hit.SetActive(true);
+        Invoke("HitInactive", .5f);
+    }
+    public void HitInactive()
+    {
+        hit.SetActive(false);
+    }
 }

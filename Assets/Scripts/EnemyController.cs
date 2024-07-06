@@ -36,7 +36,7 @@ public class EnemyTemplate
     public float TimeLastHit = 0;
     public float TimeSinceLastHit = 2;
     public float TimeLastShot = 0;
-    public float ShootCoolDown = .5f;
+    public float ShootCoolDown = 1f;
     public float invFrames = 1f;
     public int waveID;
     public void OnDie(GameObject me, int[] Wave)
