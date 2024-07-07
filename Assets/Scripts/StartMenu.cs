@@ -11,6 +11,7 @@ public class StartMenu : MonoBehaviour
     public Canvas StartScreen;
     public Canvas LevelScreen;
     public Canvas PauseScreen;
+    public Canvas CreditsScreen;
     void Start()
     {
         AudioController.Instance.TocarBGMusic(0);
@@ -60,6 +61,11 @@ public class StartMenu : MonoBehaviour
     {
         StartScreen.gameObject.SetActive(false);
         PauseScreen.gameObject.SetActive(true);
+    }
+    public void GoToCredits()
+    {
+        StartScreen.gameObject.SetActive(false);
+        CreditsScreen.gameObject.SetActive(true);
     }
 
 

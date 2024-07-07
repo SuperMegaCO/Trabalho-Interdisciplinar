@@ -47,10 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9c3c16336d5ad4dba3e7914d979292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4002765458785519309, guid: bffa39615c1c2934b8eae2815cc6fef7, type: 3}
+  bullet: {fileID: 4002765458785519309, guid: 1980125bf51f1ba48923c014e13a028c, type: 3}
   yplane: {fileID: 0}
   AnvilComponent: {fileID: 7852406537569841763}
+  player: {fileID: 0}
   cooldowntracker: 0
+  firevector: {x: 0, y: 0, z: 0}
+  timelastfired: 0
+  timesfired: 0
   particles: {fileID: 3482522346003431224, guid: 81445c96e4adbae4aa73f9d4b3fff2d9, type: 3}
   particlesPrefab: {fileID: 3482522346003431224, guid: 81445c96e4adbae4aa73f9d4b3fff2d9, type: 3}
 --- !u!65 &7759966632469343770

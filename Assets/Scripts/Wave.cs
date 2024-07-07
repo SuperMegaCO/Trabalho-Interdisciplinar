@@ -9,13 +9,14 @@ public class Wave : MonoBehaviour
     public static int numbOfEnemies;
     public static int aliveEnemies;
     public GameObject[] Enemies;
-    public string[] SpawnTags = { "SwordSpawnPoint", "CauldronSpawnPoint", "AnvilSpawnPoint", "BossSpawnPoint" };
+    public string[] SpawnTags = { "CauldronSpawnPoint", "AnvilSpawnPoint"};
     public bool waveSpawned = false;
     // Start is called before the first frame update
     void Start()
     {
         aliveEnemies = 0;
         SpawnWave();
+        InvokeRepeating("SpawnSwords", 0f, 5f);
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class Wave : MonoBehaviour
                 waveSpawned = false;
                 Waves[waveID].SetActive(false);
                 waveID++;
-                SpawnWave();
+                Invoke("SpawnWave", 5f);
             }
             else
             {
@@ -60,5 +61,12 @@ public class Wave : MonoBehaviour
             i++;
         }
         
+    }
+    void SpawnSwords()
+    {
+        foreach (var point in GameObject.FindGameObjectsWithTag("SwordSpawnPoint"))
+        {
+            Instantiate(Enemies[2], new Vector3(point.transform.position.x, GameObject.Find("ActionPlane").transform.position.y, point.transform.position.z), Quaternion.identity);
+        }
     }
 }

@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         //AudioController.Instance.TocarBGMusic(1);
         points = 0;
         maxHP = 3;
+        gameWon = false;
         currentHP = maxHP;
         Time.timeScale = 1.0f;
         EndCanvas.SetActive(false);
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentHP <= 0)
         {
-            
+            EndGame(EndCanvas, GameOver);
         }
         if (gameWon)
         {
